@@ -24,7 +24,22 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            exit() 
+            exit()
+        #if event.type == pygame.MOUSEMOTION: 
+        #    print(event.pos) # see the mouse position
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            print('mouse down') # see if mouse button is down
+        if event.type == pygame.MOUSEBUTTONUP:
+            print('mouse up') # see if mouse button is released.
+        
+        # My way 
+        #mouse_pos = pygame.mouse.get_pos()
+        #if (player_rect.collidepoint(mouse_pos)):
+        #    print('collision')
+
+        # Another way
+        if event.type == pygame.MOUSEMOTION:
+            if player_rect.collidepoint(event.pos): print('collision')
     screen.blit(sky_surface, (0, 0))
     screen.blit(ground_surface, (0, 300))
     screen.blit(text_surface, (300, 50))
@@ -34,6 +49,14 @@ while True:
     #player_rect.left += 1
     #print(player_rect.left)
     screen.blit(player_surf, player_rect) # Now the player surface is placed where the player rectangle is.
+
+    #if player_rect.colliderect(snail_rect): # returns 0 or 1. Python tests for true, is not necessary to write if ... == 1.
+    #    print('collision') 
+
+    # With the following code one can check if the mouse is being pressed and which of the buttons is pressed.
+    #mouse_pos = pygame.mouse.get_pos()
+    #if (player_rect.collidepoint(mouse_pos)):
+    #    print(pygame.mouse.get_pressed())
 
     pygame.display.update()
     clock.tick(60)
