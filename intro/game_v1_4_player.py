@@ -57,7 +57,7 @@ while True:
     # if keys[pygame.K_SPACE]:
     #    print('jump')
 
-    # Collision
+    # Collision to game over.
     if snail_rect.colliderect(player_rect):
          pygame.quit()
          exit()
